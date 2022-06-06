@@ -26,6 +26,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    flavorDimensions "app"
+
+    productFlavors {
+        uat {
+            buildConfigField 'String', 'BASE_URL', BASE_URL_UAT
+        }
+
+        prod {
+            buildConfigField 'String', 'BASE_URL', BASE_URL_PROD
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">UserSearchApplication</string>
+    <string name="error_dialog_title">Error</string>
 </resources>
