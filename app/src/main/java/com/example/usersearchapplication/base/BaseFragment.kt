@@ -17,7 +17,7 @@ import com.example.usersearchapplication.utils.view.CustomProgressDialog
  * @Date: 06 June 2022
  */
 
-abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel<*>> : Fragment(),
+abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment(),
     LifecycleObserver {
 
     abstract val viewModel: VM

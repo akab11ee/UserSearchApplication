@@ -12,8 +12,7 @@ import kotlinx.coroutines.CoroutineExceptionHandler
  * @Date: 06 June 2022
  */
 
-open class BaseViewModel<R : BaseRepository>(
-    private val repository: R,
+open class BaseViewModel(
     private val dispatcherProvider: DispatcherProvider
 ) : ViewModel() {
 
@@ -26,6 +25,9 @@ open class BaseViewModel<R : BaseRepository>(
         showErrorDialog(ApiError())
     }
 
+    /*
+     * Use this method to show generic loading dialog when required
+     */
     fun showLoading() {
         if (showLoadingDialog.value == false) {
             showLoadingDialog.value = true
@@ -38,12 +40,12 @@ open class BaseViewModel<R : BaseRepository>(
         }
     }
 
+    /*
+    * Use this method to show generic error dialog when required
+    */
+
     fun showErrorDialog(error: ApiError) {
         showErrorDialog.value = DataError(error)
-    }
-
-    fun getRepo(): R {
-        return repository
     }
 
     fun getDispatcher(): DispatcherProvider {

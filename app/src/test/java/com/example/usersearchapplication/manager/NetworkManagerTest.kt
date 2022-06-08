@@ -21,13 +21,13 @@ import retrofit2.Response
 
 class NetworkManagerTest {
 
-    lateinit var SUT: NetworkManager
+    lateinit var SUT: NetworkManagerImpl
     lateinit var serviceGenerator: ServiceGenerator
 
     @Before
     fun setUp() {
         serviceGenerator = mockk(relaxUnitFun = true)
-        SUT = spyk(NetworkManager(serviceGenerator))
+        SUT = spyk(NetworkManagerImpl(serviceGenerator))
     }
 
     @Test

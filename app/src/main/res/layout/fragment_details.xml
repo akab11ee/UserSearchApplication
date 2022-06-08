@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.example.usersearchapplication.data.model.SearchItem" />
+
+        <variable
+            name="userDetail"
+            type="com.example.usersearchapplication.data.model.UserDetail" />
+
+        <variable
+            name="view"
+            type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/default_padding"
+        tools:context=".ui.details.DetailsFragment">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/image_wrapper"
+            style="@style/Card.CircleImage.DetailsAvatar"
+            android:layout_marginBottom="@dimen/vertical_margin_big"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="@dimen/details_image_size"
+                android:layout_height="@dimen/details_image_size"
+                android:layout_gravity="center"
+                app:load_image="@{item.avatarUrl}" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_id"
+            style="@style/TextView.Primary.Header.Bold"
+            android:layout_marginStart="@dimen/horizontal_margin_mid"
+            android:layout_marginTop="@dimen/vertical_margin_big"
+            android:gravity="center"
+            android:text="@{String.valueOf(item.id)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_wrapper"
+            tools:text="1103456" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/TextView.Primary.Subheader.Bold"
+            android:layout_below="@id/tv_id"
+            android:layout_marginStart="@dimen/horizontal_margin_mid"
+            android:layout_marginTop="@dimen/vertical_margin_mid"
+            android:layout_toEndOf="@id/image_wrapper"
+            android:text="@{item.login}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_id"
+            tools:text="Jack Johnson" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clFollowers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name">
+
+
+            <TextView
+                android:id="@+id/tvFollowers"
+                style="@style/TextView.Secondary.Body.Fade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/vertical_margin_mid"
+                android:gravity="center"
+                android:maxLines="8"
+                android:text="@string/followers"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvFollowerCount"
+                style="@style/TextView.Primary.Subheader.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/vertical_margin_mid"
+                android:gravity="center"
+                android:maxLines="8"
+                android:text="@{String.valueOf(userDetail.followers)}"
+                app:layout_constraintStart_toEndOf="@+id/tvFollowers"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="1123" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{userDetail.location == null ? view.GONE : view.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clFollowers">
+
+
+            <TextView
+                android:id="@+id/tvLocation"
+                style="@style/TextView.Secondary.Body.Fade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/vertical_margin_mid"
+                android:gravity="center"
+                android:maxLines="8"
+                android:text="@string/location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvLocationValue"
+                style="@style/TextView.Primary.Subheader.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="@dimen/vertical_margin_mid"
+                android:gravity="center"
+                android:maxLines="8"
+                android:text="@{userDetail.location}"
+                app:layout_constraintStart_toEndOf="@+id/tvLocation"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="India" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_bio"
+            style="@style/TextView.Primary.Subheader.Bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_id"
+            android:layout_marginStart="@dimen/horizontal_margin_mid"
+            android:layout_marginTop="@dimen/vertical_margin_big"
+            android:layout_toEndOf="@id/image_wrapper"
+            android:text="@{userDetail.bio}"
+            android:visibility="@{userDetail.bio == null ? view.GONE : view.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clLocation"
+            tools:text="Hey, I am John and i am a web developer. I love many of the programming languages. I have almost 7 years of experience in web development." />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

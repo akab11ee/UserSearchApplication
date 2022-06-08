@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.layout_error_dialog.*
  * @Date: 06 June 2022
  */
 
-abstract class BaseActivity<VB : ViewBinding, VM : BaseViewModel<*>> :
+abstract class BaseActivity<VB : ViewBinding, VM : BaseViewModel> :
     AppCompatActivity() {
 
     abstract val viewModel: VM

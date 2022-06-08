@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">UserSearchApplication</string>
     <string name="error_dialog_title">Error</string>
+    <string name="search_hint">Enter search text</string>
+    <string name="message_offline">Currently offline!\nPlease, check your network connection</string>
+    <string name="message_welcome">Welcome to Fast Search</string>
+    <string name="message_empty_result">Search result is empty</string>
+    <string name="message_error">No items found</string>
+    <string name="search_query_hint">Enter search text</string>
+    <string name="project_link">Open project in browser</string>
+    <string name="followers">Followers: </string>
+    <string name="location">Location: </string>
 </resources>

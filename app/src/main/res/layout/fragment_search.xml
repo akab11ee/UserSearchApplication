@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="itemSize"
+            type="Integer" />
+
+        <variable
+            name="view"
+            type="android.view.View" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.search.SearchFragment">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:padding="8dp"
+                android:scrollbarStyle="outsideOverlay"
+                android:scrollbars="vertical"
+                android:visibility="@{itemSize > 0 ? view.VISIBLE : view.GONE}"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_search" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <TextView
+            android:id="@+id/message_error"
+            style="@style/TextView.Secondary.Title.Bold"
+            android:layout_gravity="center"
+            android:text="@string/message_error"
+            android:textAlignment="center"
+            android:visibility="@{itemSize == 0 ? view.VISIBLE : view.GONE}"
+            tools:visibility="visible" />
+
+    </FrameLayout>
+</layout>

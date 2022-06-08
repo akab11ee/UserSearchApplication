@@ -4,7 +4,7 @@ import com.example.usersearchapplication.data.network.DataError
 import com.example.usersearchapplication.data.network.Success
 import com.example.usersearchapplication.getFailedResponseDataError
 import com.example.usersearchapplication.getUserDetailResponse
-import com.example.usersearchapplication.manager.NetworkManager
+import com.example.usersearchapplication.manager.NetworkManagerImpl
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.spyk
@@ -20,13 +20,13 @@ import org.junit.Test
 
 class UserDetailRepositoryTest {
 
-    lateinit var SUT: UserDetailRepository
-    lateinit var networkManager: NetworkManager
+    lateinit var SUT: UserDetailRepositoryImpl
+    lateinit var networkManager: NetworkManagerImpl
 
     @Before
     fun setUp() {
         networkManager = mockk(relaxUnitFun = true)
-        SUT = spyk(UserDetailRepository(networkManager))
+        SUT = spyk(UserDetailRepositoryImpl(networkManager))
     }
 
     @Test
